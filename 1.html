@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Лаба 3</title>
+  </head>
+  <body>
+    <script>
+      function toWords(str){
+        const digits = [
+          'один',
+          'два',
+          'три',
+          'четыре',
+          'пять',
+          'шесть',
+          'семь',
+          'восемь',
+          'девять',
+          'десять',
+          'одинадцать',
+          'двенадцать',
+          'тринадцать',
+          'четырнадцать',
+          'пятнадцать',
+          'шестнадцать',
+          'семнадцать',
+          'восемнадцать',
+          'девятнадцать',
+        ]
+        const tens = [
+          'двадцать',
+          'тридцать',
+          'сорок',
+          'пятьдесят',
+          'шестьдесят',
+          'семьдесят',
+          'восемьдесят',
+          'девяносто',
+        ]
+        const number = parseInt(str);
+        if(number < 20){
+          return digits[number - 1]
+        }else{
+          const firstDigit = number % 10;
+          const secondDigit = (number - firstDigit) / 10;
+          if(firstDigit){
+            return tens[secondDigit - 2] + ' ' + digits[firstDigit - 1]
+          }else {
+            return tens[secondDigit - 2]
+          }
+        }
+      }
+      const str = prompt('Enter number')
+      alert(toWords(str));
+    </script>
+  </body>
+</html>

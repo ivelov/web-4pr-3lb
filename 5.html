@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Лаба 3</title>
+  </head>
+  <body>
+    <script>
+      function run() {
+        let str = prompt("Enter text", "aaaaa 1994/03/21 aab");
+
+        alert("Result: " + parseDate(str));
+      }
+
+      function parseDate(str) {
+        let newStr = str;
+        let dateIndex = newStr.search(/[0-9][0-9][0-9][0-9]\/[0-1][0-9]\/[0-3][0-9]/g);
+        
+        while (dateIndex !== -1) {
+
+          let newDate = new Date(newStr.slice(dateIndex, dateIndex + 10));
+          let newDateMonth = newDate.getMonth() > 8 ? newDate.getMonth()+1 : '0' + (newDate.getMonth()+1);
+          let newDateStr = `${newDate.getDate()}.${newDateMonth}.${newDate.getFullYear()}`;
+          newStr = newStr.slice(0, dateIndex) + newDateStr + newStr.slice(dateIndex + 10);
+
+          dateIndex = newStr.search(/[0-9][0-9][0-9][0-9]\/[0-1][0-9]\/[0-3][0-9]/g);
+        }
+
+        return newStr;
+      }
+
+      run();
+    </script>
+  </body>
+</html>

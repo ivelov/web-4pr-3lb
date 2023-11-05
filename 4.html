@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Лаба 3</title>
+  </head>
+  <body>
+    <script>
+      function run() {
+        let str = prompt("Enter expression", "10 + 12");
+
+        alert("Result: " + calculate(str));
+      }
+
+      function calculate(str) {
+        let operationIndex = str.search(/[\+\-\*\/]/g);
+        if (operationIndex === -1) {
+          return 0;
+        }
+
+        let operand1 = parseFloat(str.slice(0, operationIndex));
+        let operand2 = parseFloat(str.slice(operationIndex + 1));
+
+        let result = 0;
+        let operationChar = str.charAt(operationIndex);
+        switch (operationChar) {
+          case "+":
+            result = operand1 + operand2;
+            break;
+          case "-":
+            result = operand1 - operand2;
+            break;
+          case "*":
+            result = operand1 * operand2;
+            break;
+          case "/":
+            result = operand1 / operand2;
+            break;
+        }
+        return result;
+      }
+
+      run();
+    </script>
+  </body>
+</html>
